@@ -15,18 +15,17 @@ void caculate(int node,vector<path> c_map) {
 		ans++;
 		return;
 	}
-	for (int i = 0; i < c_map.size(); i++) {
+	for (int i = 0; i < c_map.size(); i++) 
+	{
 		vector<path> n_map = c_map;
-		if (n_map[i].a == node && n_map[i].used == false) {
-			n_map[i].used = true;
-			caculate(n_map[i].b, n_map);
+		int a = n_map[i].a, b = n_map[i].b;		
+		if (a == node) {
+			n_map.erase(n_map.begin()+i);
+			caculate(b, n_map);
 		}
-	}
-	for (int i = 0; i < c_map.size(); i++) {
-		vector<path> n_map = c_map;
-		if (n_map[i].b == node && n_map[i].used == false) {
-			n_map[i].used = true;
-			caculate(n_map[i].a, n_map);
+		if (b == node) {
+			n_map.erase(n_map.begin() + i);
+			caculate(a, n_map);
 		}
 	}
 }
