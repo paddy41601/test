@@ -1,5 +1,4 @@
 echo "Start Script..."
-
 while :
 do
 	pkill cpulimit
